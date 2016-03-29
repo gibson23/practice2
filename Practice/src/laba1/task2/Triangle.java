@@ -72,9 +72,9 @@ public class Triangle extends Shape {
 
 	@Override
 	public void print() {
-		System.out.print("A(" + ax + ", " + ay + "), ");
-		System.out.print("B(" + bx + ", " + by + "), ");
-		System.out.println("C(" + cx + ", " + cy + ").");
+		System.out.println("A(" + ax + ", " + ay + "), " + 
+					"B(" + bx + ", " + by + "), " + 
+					"C(" + cx + ", " + cy + ").");
 
 	}
 

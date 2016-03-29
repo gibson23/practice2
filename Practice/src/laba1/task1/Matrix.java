@@ -25,19 +25,22 @@ public class Matrix {
 	public Matrix add(Matrix m) {
 
 		double[][] addingArray = m.getArray();
-		if ((addingArray.length != this.array.length) ||
-				(addingArray[0].length) != this.array[0].length) {
+		int addingArrayRows = addingArray.length;
+		int addingArrayColumns = addingArray[0].length;
+		
+		if ((addingArrayRows != this.array.length) ||
+				(addingArrayColumns != this.array[0].length)) {
 			throw new IllegalArgumentException("matrices must be" + 
 		" the same dimension");
 		}
-		double[][] d3 = new double[addingArray.length][addingArray[0].length];
-		for (int i = 0; i < addingArray.length; i++) {
-			for (int j = 0; j < addingArray[0].length; j++) {
-				d3[i][j] = this.array[i][j] + addingArray[i][j];
+		double[][] result = new double[addingArrayRows][addingArrayColumns];
+		for (int i = 0; i < addingArrayRows; i++) {
+			for (int j = 0; j < addingArrayColumns; j++) {
+				result[i][j] = this.array[i][j] + addingArray[i][j];
 			}
 		}
 
-		return new Matrix(d3);
+		return new Matrix(result);
 	}
 
 	public Matrix multiply(Matrix m) {
@@ -46,24 +49,26 @@ public class Matrix {
 			throw new IllegalArgumentException("inner dimensions must agree");
 		}
 
-        int size = this.array[0].length; // m1 columns length
-        int mRColLength = multiplier[0].length; // m result columns length
-        double[][] mResult = new double[size][mRColLength];
-        for(int i = 0; i < size; i++) {         // rows from m1
-            for(int j = 0; j < mRColLength; j++) {     // columns from m2
-                for(int k = 0; k < size; k++) { // columns from m1
-                    mResult[i][j] += this.array[i][k] * multiplier[k][j];
+        int rowsSize = this.array[0].length; // m result rows length
+        int columnsSize = multiplier[0].length; // m result columns length
+        double[][] result = new double[rowsSize][columnsSize];
+        for(int i = 0; i < rowsSize; i++) {         // rows from m1
+            for(int j = 0; j < columnsSize; j++) {     // columns from m2
+                for(int k = 0; k < rowsSize; k++) { // columns from m1
+                    result[i][j] += this.array[i][k] * multiplier[k][j];
                 }
             }
         }
-        return new Matrix(mResult);
+        return new Matrix(result);
     }
 
 	public Matrix transpose() {
+		int originColumns = this.array[0].length;
+		int originRows = this.array.length;
 		double[][] temp = 
-				new double[this.array[0].length][this.array.length];
-        for (int i = 0; i < this.array.length; i++)
-            for (int j = 0; j < this.array[0].length; j++)
+				new double[originColumns][originRows];
+        for (int i = 0; i < originRows; i++)
+            for (int j = 0; j < originColumns; j++)
                 temp[j][i] = this.array[i][j];
         return new Matrix(temp);
 	}
@@ -74,14 +79,15 @@ public class Matrix {
 
 	@Override
 	public String toString() {
-        String result = "";
+        StringBuilder result = new StringBuilder("");
         for(int i = 0; i < this.array.length; i++) {
             for(int j = 0; j < this.array[i].length; j++) {
-                result += this.array[i][j] + "   ";
+                result.append(this.array[i][j]);
+                result.append("   ");
             }
-            result += "\n";
+            result.append("\n");
         }
-        return result;
+        return result.toString();
 	}
 
 	public static void main(String[] args) {

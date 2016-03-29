@@ -93,10 +93,10 @@ public class Quadrangle extends Shape {
 
 	@Override
 	public void print() {
-		System.out.print("A(" + ax + ", " + ay + "), ");
-		System.out.print("B(" + bx + ", " + by + "), ");
-		System.out.print("C(" + cx + ", " + cy + "), ");
-		System.out.println("D(" + dx + ", " + dy + ").");
+		System.out.println("A(" + ax + ", " + ay + "), " + 
+				"B(" + bx + ", " + by + "), " + 
+				"C(" + cx + ", " + cy + ")." + 
+				"D(" + dx + ", " + dy + ").");
 
 	}
 
