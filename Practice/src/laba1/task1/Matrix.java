@@ -134,10 +134,25 @@ public class Matrix {
 		
 		System.out.println("******************");
 		double[][] test1 = new double[2][1];
+		double[][] test2 = new double[2][1];
+		double[][] test3 = new double[1][2];
 		System.out.println(Arrays.deepToString(test1));
 		
 		test1[0][0] = 3.3;
+		test1[1][0] = 1.3;
+		test2[0][0] = 5.3;
+		test2[1][0] = 2.3;
+		test3[0][0] = 6.3;
+		test3[0][1] = 6.4;
 		
+		Matrix mTest1 = new Matrix(test1);
+		Matrix mTest2 = new Matrix(test2);
+		Matrix mTest3 = new Matrix(test3);
+		System.out.println(mTest1.add(mTest2));
+		System.out.println(mTest1.multiply(mTest3));
+		System.out.println(mTest1.transpose());
+		Matrix mTest4 = new Matrix(null);
+		System.out.println(mTest1.add(mTest4));
 	}
 
 }

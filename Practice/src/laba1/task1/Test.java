@@ -1,8 +1,5 @@
 package laba1.task1;
 
-import java.math.BigDecimal;
-import java.util.Arrays;
-import java.util.Random;
 
 public class Test {
 	
