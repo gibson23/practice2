@@ -47,13 +47,12 @@ public class Matrix {
 			throw new IllegalArgumentException("inner dimensions must agree");
 		}
 
-        int m1ColLength = this.array[0].length; // m1 columns length
-        int mRRowLength = this.array[0].length;    // m result rows length
+        int size = this.array[0].length; // m1 columns length
         int mRColLength = multiplier[0].length; // m result columns length
-        double[][] mResult = new double[mRRowLength][mRColLength];
-        for(int i = 0; i < mRRowLength; i++) {         // rows from m1
+        double[][] mResult = new double[size][mRColLength];
+        for(int i = 0; i < size; i++) {         // rows from m1
             for(int j = 0; j < mRColLength; j++) {     // columns from m2
-                for(int k = 0; k < m1ColLength; k++) { // columns from m1
+                for(int k = 0; k < size; k++) { // columns from m1
                     mResult[i][j] += this.array[i][k] * multiplier[k][j];
                 }
             }
