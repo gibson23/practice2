@@ -80,6 +80,10 @@ public class Test {
         
         System.out.println(toString(transposeMatrix(multiplier)));
         
+        double testDouble = 3.3;
+        testDouble *= 2.5;
+        System.out.println(testDouble);
+        
 //        double dd =BigDecimal.valueOf(3.333432432423).setScale(2,BigDecimal.ROUND_HALF_DOWN).doubleValue();
 //        System.out.println(dd);
 //		double[][] d1 = new double[5][3];
