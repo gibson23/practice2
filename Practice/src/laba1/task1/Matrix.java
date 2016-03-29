@@ -8,7 +8,6 @@ public class Matrix {
 	private double[][] array;
 
 	public Matrix() {
-
 	}
 
 	public Matrix(double[][] d) {
