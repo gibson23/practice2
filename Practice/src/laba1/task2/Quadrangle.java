@@ -11,6 +11,20 @@ public class Quadrangle extends Shape {
 	private double dx;
 	private double dy;
 	
+	public Quadrangle(double... d) {
+		if(d.length != 8)
+			throw new IllegalArgumentException("there "
+					+ "must be eight doubles.");
+		ax = d[0];
+		ay = d[1];
+		bx = d[2];
+		by = d[3];
+		cx = d[4];
+		cy = d[5];
+		dx = d[6];
+		dy = d[7];
+	}
+	
 	public Quadrangle(double ax, double ay, double bx, double by, double cx,
 			double cy, double dx, double dy) {
 		this.ax = ax;

@@ -8,6 +8,18 @@ public class Triangle extends Shape {
 	private double by;
 	private double cx;
 	private double cy;
+	
+	public Triangle(double... d) {
+		if(d.length != 6)
+			throw new IllegalArgumentException("there "
+					+ "must be six doubles.");
+		ax = d[0];
+		ay = d[1];
+		bx = d[2];
+		by = d[3];
+		cx = d[4];
+		cy = d[5];
+	}
 
 	public double getAx() {
 		return ax;
