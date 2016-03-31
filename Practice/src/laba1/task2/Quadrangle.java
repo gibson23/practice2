@@ -1,5 +1,10 @@
 package laba1.task2;
 
+/**
+ * Implementation of the {@code Shape} class which allows
+ * to create quadrangles.
+ * @author  Vasiliy
+ */
 public class Quadrangle extends Shape {
 	
 	private double ax;
@@ -10,21 +15,42 @@ public class Quadrangle extends Shape {
 	private double cy;
 	private double dx;
 	private double dy;
-	
-	public Quadrangle(double... d) {
-		if(d.length != 8)
+	/**
+	 * Constructor with varargs to simplify the creation
+	 * of an instance. Constructs the quadrangle with 
+	 * specified coordinates.
+	 * 
+	 * @param coordinates the coordinates of the points
+	 * of the quadrangle in the following order: Ax, Ay, Bx, By,
+	 * Cx, Cy, Dx, Dy.
+	 * @throws IllegalArgumentException if there are less or 
+	 * more than eight doubles.
+	 */
+	public Quadrangle(double... coordinates) {
+		if(coordinates.length != 8)
 			throw new IllegalArgumentException("there "
 					+ "must be eight doubles.");
-		ax = d[0];
-		ay = d[1];
-		bx = d[2];
-		by = d[3];
-		cx = d[4];
-		cy = d[5];
-		dx = d[6];
-		dy = d[7];
+		ax = coordinates[0];
+		ay = coordinates[1];
+		bx = coordinates[2];
+		by = coordinates[3];
+		cx = coordinates[4];
+		cy = coordinates[5];
+		dx = coordinates[6];
+		dy = coordinates[7];
 	}
-	
+	/**
+	 * Constructs the quadrangle with specified coordinates.
+	 * 
+	 * @param ax the X-Asis coordinate of the A point of the quadrangle
+	 * @param ay the Y-Asis coordinate of the A point of the quadrangle
+	 * @param bx the X-Asis coordinate of the B point of the quadrangle
+	 * @param by the Y-Asis coordinate of the B point of the quadrangle
+	 * @param cx the X-Asis coordinate of the C point of the quadrangle
+	 * @param cy the Y-Asis coordinate of the C point of the quadrangle
+	 * @param dx the X-Asis coordinate of the D point of the quadrangle
+	 * @param dy the Y-Asis coordinate of the D point of the quadrangle
+	 */
 	public Quadrangle(double ax, double ay, double bx, double by, double cx,
 			double cy, double dx, double dy) {
 		this.ax = ax;
@@ -101,6 +127,9 @@ public class Quadrangle extends Shape {
 		this.dy = dy;
 	}
 
+	/**
+	 * Default constructor.
+	 */
 	public Quadrangle() {
 	
 	}
@@ -114,6 +143,10 @@ public class Quadrangle extends Shape {
 
 	}
 
+	/**
+	 * @throws IllegalArgumentException if specified
+	 * ratio is negative.
+	 */
 	@Override
 	public void scale(double ratio) {
 		if(ratio < 0) {

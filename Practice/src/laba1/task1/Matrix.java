@@ -3,15 +3,28 @@ package laba1.task1;
 import java.util.Arrays;
 import java.util.Random;
 
+/**
+ * Class that represents a mathematical matrix using
+ * two-dimensional array.
+ * @author Vasiliy
+ * 
+ */
 public class Matrix {
 	
 	private double[][] array;
 
+	/**
+	 * Default constructor.
+	 */
 	public Matrix() {
 	}
 
-	public Matrix(double[][] d) {
-		this.array = d;
+	/**
+	 * Constructs a Matrix using specified array.
+	 * @param array the array to create {@code Matrix}
+	 */
+	public Matrix(double[][] array) {
+		this.array = array;
 	}
 
 	public double[][] getArray() {
@@ -22,6 +35,15 @@ public class Matrix {
 		this.array = array;
 	}
 
+	/**
+	 * Adds the specified Matrix to the current. Adding 
+	 * matrix must be the same dimension as current.
+	 *  
+	 * @param m the Matrix which will be added to this
+	 * @return new Matrix which is result of adding
+	 * @throws IllegalArgumentException if matrices have
+	 * different dimensions.
+	 */
 	public Matrix add(Matrix m) {
 
 		double[][] addingArray = m.getArray();
@@ -43,6 +65,17 @@ public class Matrix {
 		return new Matrix(result);
 	}
 
+	/**
+	 * Multiplies current matrix by the specified. 
+	 * Multiplying matrix must have number of rows
+	 * equal to the current matrix's number of columns.
+	 * 
+	 * @param m the {@code Matrix} which will be multiplied by.
+	 * @return new {@code Matrix} which is result of multiplying.
+	 * @throws IllegalArgumentException if number of 
+	 * rows of the specified matrix does not equal to
+	 * the number of columns of the current matrix.
+	 */
 	public Matrix multiply(Matrix m) {
 		double[][] multiplier = m.getArray();
 		if(this.array[0].length != multiplier.length) {
@@ -62,6 +95,12 @@ public class Matrix {
         return new Matrix(result);
     }
 
+	/**
+	 * Transposes current matrix.
+	 * 
+	 * @return new {@code Matrix} which is result 
+	 * of transposing of the current matrix. 
+	 */
 	public Matrix transpose() {
 		int originColumns = this.array[0].length;
 		int originRows = this.array.length;
@@ -73,6 +112,9 @@ public class Matrix {
         return new Matrix(temp);
 	}
 
+	/**
+	 * Prints out the current matrix.
+	 */
 	public void print() {
 		this.toString();
 	}

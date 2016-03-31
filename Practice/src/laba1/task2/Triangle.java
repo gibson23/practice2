@@ -1,5 +1,10 @@
 package laba1.task2;
 
+/**
+ * Implementation of the {@code Shape} class which allows
+ * to create triangles.
+ * @author  Vasiliy
+ */
 public class Triangle extends Shape {
 	
 	private double ax;
@@ -9,16 +14,27 @@ public class Triangle extends Shape {
 	private double cx;
 	private double cy;
 	
-	public Triangle(double... d) {
-		if(d.length != 6)
+	/**
+	 * Constructor with varargs to simplify the creation
+	 * of an instance. Constructs the triangle with 
+	 * specified coordinates.
+	 * 
+	 * @param coordinates the coordinates of the points
+	 * of the quadrangle in the following order: Ax, Ay, Bx, By,
+	 * Cx, Cy.
+	 * @throws IllegalArgumentException if there are less or 
+	 * more than six doubles.
+	 */
+	public Triangle(double... coordinates) {
+		if(coordinates.length != 6)
 			throw new IllegalArgumentException("there "
 					+ "must be six doubles.");
-		ax = d[0];
-		ay = d[1];
-		bx = d[2];
-		by = d[3];
-		cx = d[4];
-		cy = d[5];
+		ax = coordinates[0];
+		ay = coordinates[1];
+		bx = coordinates[2];
+		by = coordinates[3];
+		cx = coordinates[4];
+		cy = coordinates[5];
 	}
 
 	public double getAx() {
@@ -73,6 +89,16 @@ public class Triangle extends Shape {
 
 	}
 
+	/**
+	 * Constructs the triangle with specified coordinates.
+	 * 
+	 * @param ax the X-Asis coordinate of the A point of the triangle
+	 * @param ay the Y-Asis coordinate of the A point of the triangle
+	 * @param bx the X-Asis coordinate of the B point of the triangle
+	 * @param by the Y-Asis coordinate of the B point of the triangle
+	 * @param cx the X-Asis coordinate of the C point of the triangle
+	 * @param cy the Y-Asis coordinate of the C point of the triangle
+	 */
 	public Triangle(double ax, double ay, double bx, double by, double cx, double cy) {
 		this.ax = ax;
 		this.ay = ay;
@@ -90,6 +116,10 @@ public class Triangle extends Shape {
 
 	}
 
+	/**
+	 * @throws IllegalArgumentException if specified
+	 * ratio is negative.
+	 */
 	@Override
 	public void scale(double ratio) {
 		if(ratio < 0) {
