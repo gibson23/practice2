@@ -15,18 +15,18 @@ public class Quadrangle extends Shape {
 	private double cy;
 	private double dx;
 	private double dy;
+	
 	/**
-	 * Constructor with varargs to simplify the creation
-	 * of an instance. Constructs the quadrangle with 
-	 * specified coordinates.
+	 * Constructs the quadrangle using array
+	 * with specified coordinates.
 	 * 
-	 * @param coordinates the coordinates of the points
-	 * of the quadrangle in the following order: Ax, Ay, Bx, By,
-	 * Cx, Cy, Dx, Dy.
+	 * @param coordinates the array containing coordinates
+	 * of the points of the quadrangle in the following 
+	 * order: Ax, Ay, Bx, By, Cx, Cy, Dx, Dy.
 	 * @throws IllegalArgumentException if there are less or 
 	 * more than eight doubles.
 	 */
-	public Quadrangle(double... coordinates) {
+	public Quadrangle(double[] coordinates) {
 		if(coordinates.length != 8)
 			throw new IllegalArgumentException("there "
 					+ "must be eight doubles.");
@@ -38,29 +38,6 @@ public class Quadrangle extends Shape {
 		cy = coordinates[5];
 		dx = coordinates[6];
 		dy = coordinates[7];
-	}
-	/**
-	 * Constructs the quadrangle with specified coordinates.
-	 * 
-	 * @param ax the X-Asis coordinate of the A point of the quadrangle
-	 * @param ay the Y-Asis coordinate of the A point of the quadrangle
-	 * @param bx the X-Asis coordinate of the B point of the quadrangle
-	 * @param by the Y-Asis coordinate of the B point of the quadrangle
-	 * @param cx the X-Asis coordinate of the C point of the quadrangle
-	 * @param cy the Y-Asis coordinate of the C point of the quadrangle
-	 * @param dx the X-Asis coordinate of the D point of the quadrangle
-	 * @param dy the Y-Asis coordinate of the D point of the quadrangle
-	 */
-	public Quadrangle(double ax, double ay, double bx, double by, double cx,
-			double cy, double dx, double dy) {
-		this.ax = ax;
-		this.ay = ay;
-		this.bx = bx;
-		this.by = by;
-		this.cx = cx;
-		this.cy = cy;
-		this.dx = dx;
-		this.dy = dy;
 	}
 
 	public double getAx() {

@@ -26,7 +26,6 @@ public class Test {
 		}
 		
 		for(Shape shape : shapes) {
-			if(shape != null)
 			shape.print();
 		}
 		for (int i = 0; i < shapes.length; i++) {

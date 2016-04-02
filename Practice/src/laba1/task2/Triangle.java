@@ -15,13 +15,12 @@ public class Triangle extends Shape {
 	private double cy;
 	
 	/**
-	 * Constructor with varargs to simplify the creation
-	 * of an instance. Constructs the triangle with 
-	 * specified coordinates.
+	 * Constructs the triangle using array
+	 * with specified coordinates.
 	 * 
-	 * @param coordinates the coordinates of the points
-	 * of the quadrangle in the following order: Ax, Ay, Bx, By,
-	 * Cx, Cy.
+	 * @param coordinates the array containing coordinates
+	 * of the points of the triangle in the following 
+	 * order: Ax, Ay, Bx, By, Cx, Cy, Dx, Dy.
 	 * @throws IllegalArgumentException if there are less or 
 	 * more than six doubles.
 	 */
@@ -87,25 +86,6 @@ public class Triangle extends Shape {
 
 	public Triangle() {
 
-	}
-
-	/**
-	 * Constructs the triangle with specified coordinates.
-	 * 
-	 * @param ax the X-Asis coordinate of the A point of the triangle
-	 * @param ay the Y-Asis coordinate of the A point of the triangle
-	 * @param bx the X-Asis coordinate of the B point of the triangle
-	 * @param by the Y-Asis coordinate of the B point of the triangle
-	 * @param cx the X-Asis coordinate of the C point of the triangle
-	 * @param cy the Y-Asis coordinate of the C point of the triangle
-	 */
-	public Triangle(double ax, double ay, double bx, double by, double cx, double cy) {
-		this.ax = ax;
-		this.ay = ay;
-		this.bx = bx;
-		this.by = by;
-		this.cx = cx;
-		this.cy = cy;
 	}
 
 	@Override
