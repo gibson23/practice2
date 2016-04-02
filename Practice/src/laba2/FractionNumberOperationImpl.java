@@ -25,7 +25,7 @@ public class FractionNumberOperationImpl
 	@Override
 	public FractionNumber div(FractionNumber a, FractionNumber b) {
 		if(b.getDividend() == 0)
-			throw new IllegalArgumentException("cant divide by zero");
+			throw new ArithmeticException("cant divide by zero");
 		int resultDividend = a.getDividend() * b.getDivisor();
 		int resultDivisor = a.getDivisor() * b.getDividend();
 
