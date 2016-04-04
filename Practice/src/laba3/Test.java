@@ -21,7 +21,7 @@ public class Test {
 		}
 		System.out.println("------------------------------------------");
 		StringDiv div = new StringDivImpl();
-		System.out.println(div.div("3.14e60masha", "60e20pavlik"));
+		System.out.println(div.div("3.14e+10", "60e-2"));
 		try {
 			System.out.println(div.div("masha", "5"));
 		} catch (IllegalArgumentException e) {
