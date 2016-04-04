@@ -16,6 +16,5 @@ public class StringDivImpl implements StringDiv{
 		return aDouble/bDouble;
 	}
 	
-	
 
 }
