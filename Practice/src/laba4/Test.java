@@ -26,11 +26,30 @@ public class Test {
 		System.out.println(impl.intersectionWithoutDuplicate(list1, list2));
 		System.out.println(impl.union(list1, list2));
 		
-		Dictionary dic = new Dictionary("mama mila ramu poka ne domila");
+		Dictionary dic = new Dictionary("mama mila ramu poka ne domila 8-800-555-35-35 "
+				+ "luchshe pozvonit chem u sosedei zanimat");
 		dic.showDictionary();
 		System.out.println(dic.frequency("pipa"));
 		System.out.println(dic.frequency("mil"));
 		
+		List<Integer> test1 = new ArrayList<>();
+		test1.add(1);
+		test1.add(3);
+		test1.add(5);
+		test1.add(5);
+		test1.add(5);
+		List<Integer> test2 = new ArrayList<>();
+		test2.add(1);
+		test2.add(2);
+		test2.add(5);
+		System.out.println(impl.intersection(test1, test2));
+		List<Integer> test3 = new ArrayList<>();
+		test3.add(5);
+		List<Integer> test4 = new ArrayList<>();
+		for (int i = 0; i < 8; i++) {
+			test4.add(5);
+		}
+		System.out.println(impl.intersection(test3, test4));
 		
 	}
 

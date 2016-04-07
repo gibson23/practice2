@@ -2,6 +2,7 @@ package laba4;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -22,9 +23,11 @@ public class CollectionUtilsImpl implements CollectionUtils {
 	@Override
 	public List<Integer> intersection(Collection<Integer> a,
 			Collection<Integer> b) {
-		List<Integer> result = new ArrayList<Integer>(a);
+		List<Integer> result = new ArrayList<>(a);
 		result.retainAll(b);
-		
+		List<Integer> bCopy = new ArrayList<>(b);
+		bCopy.retainAll(a);
+		result.addAll(bCopy);
 		return result;
 	}
 
