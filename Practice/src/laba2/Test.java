@@ -20,6 +20,10 @@ public class Test {
 		System.out.println(operation.sub(fraction1, fraction2));
 		System.out.println(operation.mul(fraction1, fraction2));
 		System.out.println(operation.div(fraction1, fraction2));
+		FractionNumber fn1 = new FractionNumberImpl(1, -20);
+		FractionNumber fn2 = new FractionNumberImpl(1, -19);
+		System.out.println(operation.add(fn1, fn2));
+		
 		
 
 

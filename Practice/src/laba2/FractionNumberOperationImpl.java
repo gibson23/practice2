@@ -16,10 +16,7 @@ public class FractionNumberOperationImpl
 				b.getDividend() * a.getDivisor();
 		int resultDivisor = a.getDivisor() * b.getDivisor();
 
-		FractionNumber result = new FractionNumberImpl();
-		result.setDividend(resultDividend);
-		result.setDivisor(resultDivisor);
-		return result;
+		return new FractionNumberImpl(resultDividend, resultDivisor);
 	}
 
 	@Override
@@ -29,10 +26,7 @@ public class FractionNumberOperationImpl
 		int resultDividend = a.getDividend() * b.getDivisor();
 		int resultDivisor = a.getDivisor() * b.getDividend();
 
-		FractionNumber result = new FractionNumberImpl();
-		result.setDividend(resultDividend);
-		result.setDivisor(resultDivisor);
-		return result;
+		return new FractionNumberImpl(resultDividend, resultDivisor);
 	}
 
 	@Override
@@ -40,10 +34,7 @@ public class FractionNumberOperationImpl
 		int resultDividend = a.getDividend() * b.getDividend();
 		int resultDivisor = a.getDivisor() * b.getDivisor();
 
-		FractionNumber result = new FractionNumberImpl();
-		result.setDividend(resultDividend);
-		result.setDivisor(resultDivisor);
-		return result;
+		return new FractionNumberImpl(resultDividend, resultDivisor);
 	}
 
 	@Override
@@ -52,10 +43,7 @@ public class FractionNumberOperationImpl
 				b.getDividend() * a.getDivisor();
 		int resultDivisor = a.getDivisor() * b.getDivisor();
 
-		FractionNumber result = new FractionNumberImpl();
-		result.setDividend(resultDividend);
-		result.setDivisor(resultDivisor);
-		return result;
+		return new FractionNumberImpl(resultDividend, resultDivisor);
 	}
 
 }
