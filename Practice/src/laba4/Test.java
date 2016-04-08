@@ -1,8 +1,11 @@
 package laba4;
 
+import interfaces.task4.MapUtils;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class Test {
 	
@@ -27,7 +30,7 @@ public class Test {
 		System.out.println(impl.union(list1, list2));
 		
 		Dictionary dic = new Dictionary("mama mila ramu poka ne domila 8-800-555-35-35 "
-				+ "luchshe pozvonit chem u sosedei zanimat");
+				+ "luchshe pozvonit chem u sosedei zanimat * * . . h -_-");
 		dic.showDictionary();
 		System.out.println(dic.frequency("pipa"));
 		System.out.println(dic.frequency("mil"));
@@ -50,6 +53,15 @@ public class Test {
 			test4.add(5);
 		}
 		System.out.println(impl.intersection(test3, test4));
+		
+		String str = "1234567";
+        String str2 = "1234 123_234*12";
+        MapUtils mapUtils = new MapUtilsImpl();
+        Map<String, Integer> result2 = mapUtils.findThrees(str2);
+        System.out.println(result2);
+        
+		Map<String, Integer> result = mapUtils.findThrees(str);
+		System.out.println(result);
 		
 	}
 
