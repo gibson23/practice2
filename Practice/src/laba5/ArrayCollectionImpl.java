@@ -1,10 +1,12 @@
 package laba5;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 import interfaces.task5.ArrayCollection;
 import interfaces.task5.ArrayIterator;
@@ -129,10 +131,11 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 	}
 
 	public class Itr implements ArrayIterator<E> {
-		
-		private int cursor;       // index of next element to return
-        private int lastRet = -1; // index of last element returned; -1 if no such
-        private int expectedModCount = modCount;
+
+		private int cursor; // index of next element to return
+		private int lastRet = -1; // index of last element returned; -1 if no
+									// such
+		private int expectedModCount = modCount;
 
 		@Override
 		public boolean hasNext() {
@@ -142,30 +145,45 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 		@SuppressWarnings("unchecked")
 		@Override
 		public E next() {
-            checkForComodification();
-            int i = cursor;
-            if (i >= size)
-                throw new NoSuchElementException();
-            Object[] elementData = ArrayCollectionImpl.this.elementData;
-            if (i >= elementData.length)
-                throw new ConcurrentModificationException();
-            cursor = i + 1;
-            return (E) elementData[lastRet = i];
-        }
+			checkForComodification();
+			int i = cursor;
+			if (i >= size)
+				throw new NoSuchElementException();
+			Object[] elementData = ArrayCollectionImpl.this.elementData;
+			if (i >= elementData.length)
+				throw new ConcurrentModificationException();
+			cursor = i + 1;
+			return (E) elementData[lastRet = i];
+		}
 
 		@Override
 		public Object[] getArray() {
-			
+
 			return ArrayCollectionImpl.this.getArray();
 		}
-		
+
 		final void checkForComodification() {
-            if (modCount != expectedModCount)
-                throw new ConcurrentModificationException();
-        }
-		
+			if (modCount != expectedModCount)
+				throw new ConcurrentModificationException();
+		}
+
+		public void remove() {
+			if (lastRet < 0)
+				throw new IllegalStateException();
+			checkForComodification();
+
+			try {
+				ArrayCollectionImpl.this.remove(lastRet);
+				cursor = lastRet;
+				lastRet = -1;
+				expectedModCount = modCount;
+			} catch (IndexOutOfBoundsException ex) {
+				throw new ConcurrentModificationException();
+			}
+		}
+
 	}
-	
+
 	@Override
 	public Iterator<E> iterator() {
 		return new Itr();
@@ -232,6 +250,8 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 
 	@Override
 	public boolean addAll(Collection<? extends E> c) {
+		if (c == this)
+			throw new IllegalArgumentException("can not add itself");
 		Object[] a = c.toArray();
 		int numNew = a.length;
 		ensureCapacityInternal(size + numNew); // Increments modCount
@@ -242,24 +262,37 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 
 	@Override
 	public boolean removeAll(Collection<?> c) {
-		boolean modified = false;
-		Iterator<?> it = iterator();
-		while (it.hasNext()) {
-			if (c.contains(it.next())) {
-				it.remove();
-				modified = true;
-			}
-		}
-		return modified;
+		Objects.requireNonNull(c);
+		return batchRemove(c, false);
 	}
 
 	@Override
 	public boolean retainAll(Collection<?> c) {
+		Objects.requireNonNull(c);
+		return batchRemove(c, true);
+	}
+
+	private boolean batchRemove(Collection<?> c, boolean complement) {
+		final Object[] elementData = this.elementData;
+		int r = 0, w = 0;
 		boolean modified = false;
-		Iterator<E> it = iterator();
-		while (it.hasNext()) {
-			if (!c.contains(it.next())) {
-				it.remove();
+		try {
+			for (; r < size; r++)
+				if (c.contains(elementData[r]) == complement)
+					elementData[w++] = elementData[r];
+		} finally {
+			// Preserve behavioral compatibility with AbstractCollection,
+			// even if c.contains() throws.
+			if (r != size) {
+				System.arraycopy(elementData, r, elementData, w, size - r);
+				w += size - r;
+			}
+			if (w != size) {
+				// clear to let GC do its work
+				for (int i = w; i < size; i++)
+					elementData[i] = null;
+				modCount += size - w;
+				size = w;
 				modified = true;
 			}
 		}
@@ -295,22 +328,22 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 		}
 
 	}
-	
+
 	@Override
 	public String toString() {
-        Iterator<E> it = iterator();
-        if (! it.hasNext())
-            return "[]";
+		Iterator<E> it = iterator();
+		if (!it.hasNext())
+			return "[]";
 
-        StringBuilder sb = new StringBuilder();
-        sb.append('[');
-        for (;;) {
-            E e = it.next();
-            sb.append(e == this ? "(this Collection)" : e);
-            if (! it.hasNext())
-                return sb.append(']').toString();
-            sb.append(',').append(' ');
-        }
-    }
+		StringBuilder sb = new StringBuilder();
+		sb.append('[');
+		for (;;) {
+			E e = it.next();
+			sb.append(e == this ? "(this Collection)" : e);
+			if (!it.hasNext())
+				return sb.append(']').toString();
+			sb.append(',').append(' ');
+		}
+	}
 
 }

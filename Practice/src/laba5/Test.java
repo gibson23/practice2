@@ -4,7 +4,9 @@ import interfaces.task2.FractionNumber;
 import interfaces.task2.FractionNumberOperation;
 import interfaces.task5.ArrayCollection;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import laba2.FractionNumberImpl;
 import laba2.FractionNumberOperationImpl;
@@ -46,7 +48,12 @@ public class Test {
 		System.out.println(result.value());
 		System.out.println(Arrays.toString(coll1.getArray()));
 		
-		
+		List<String> list = new ArrayList<>();
+		list.add("pipa");
+		list.add("boba");
+		list.add("nun9");
+		list.addAll(list);
+		System.out.println(list);
 	}
 
 }
