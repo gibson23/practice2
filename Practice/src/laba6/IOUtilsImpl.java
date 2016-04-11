@@ -6,7 +6,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -19,16 +18,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.xml.crypto.dsig.spec.HMACParameterSpec;
-
 import interfaces.task6.IOUtils;
 
 public class IOUtilsImpl implements IOUtils {
 
 	@Override
 	public void copyFile(String source, String dest) {
-		if (source == null || dest == null)
-			throw new NullPointerException();
 		if (source.equalsIgnoreCase(dest))
 			throw new IllegalArgumentException("Can not copy to the same file");
 
@@ -48,37 +43,16 @@ public class IOUtilsImpl implements IOUtils {
 	@Override
 	public void copyFileBest(String source, String dest) {
 
-		FileChannel sourceChannel = null;
-		FileChannel destChannel = null;
-
-		try {
-			sourceChannel = new FileInputStream(source).getChannel();
-			destChannel = new FileOutputStream(dest).getChannel();
+		try (FileChannel sourceChannel = new FileInputStream(source).getChannel();
+				FileChannel destChannel = new FileOutputStream(dest).getChannel()) {
 			sourceChannel.transferTo(0, sourceChannel.size(), destChannel);
 		} catch (IOException e) {
-			throw new IllegalArgumentException(e);
-		} finally {
-			if (sourceChannel != null) {
-				try {
-					sourceChannel.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-			if (destChannel != null) {
-				try {
-					destChannel.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+			e.printStackTrace();
 		}
 	}
 
 	@Override
 	public void copyFileBuffered(File source, File dest) {
-		if (source == null || dest == null)
-			throw new NullPointerException();
 		if (source.equals(dest))
 			throw new IllegalArgumentException("Can not copy to the same file");
 
@@ -99,9 +73,6 @@ public class IOUtilsImpl implements IOUtils {
 
 	@Override
 	public String[] findFiles(String dir) {
-		if (dir == null)
-			throw new NullPointerException();
-
 		File path = new File(dir);
 		if (!path.isDirectory())
 			throw new IllegalArgumentException();
@@ -123,9 +94,6 @@ public class IOUtilsImpl implements IOUtils {
 
 		if (extention == null)
 			return findFiles(dir);
-		if (dir == null)
-			throw new NullPointerException();
-
 		File path = new File(dir);
 		if (!path.isDirectory())
 			throw new IllegalArgumentException();
@@ -133,11 +101,12 @@ public class IOUtilsImpl implements IOUtils {
 		List<String> list = new ArrayList<>();
 		for (File file : fileArr) {
 			if (file.isFile()) {
-				if(file.getName().endsWith(extention)) {
+				if (file.getName().endsWith(extention)) {
 					list.add(file.getAbsolutePath());
 				}
 			} else {
-				list.addAll(Arrays.asList(findFiles(file.getAbsolutePath(), extention)));
+				list.addAll(Arrays.asList(findFiles(file.getAbsolutePath(),
+						extention)));
 			}
 		}
 		String[] result = new String[list.size()];
@@ -147,37 +116,50 @@ public class IOUtilsImpl implements IOUtils {
 	@Override
 	public void replaceChars(Reader in, Writer out, String inChars,
 			String outChars) {
-		
-		if(in == null || out == null) throw new NullPointerException();
-		if(inChars.length() != outChars.length())
+		if (inChars == null || outChars == null) {
+			int k;
+			try {
+				while ((k = in.read()) != -1) {
+					out.write(k);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					out.flush();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			return;
+		}
+
+		if (inChars.length() != outChars.length())
 			throw new IllegalArgumentException();
-		
+
 		Map<Character, Character> map = new HashMap<>();
 		char[] inArr = inChars.toCharArray();
 		char[] outArr = outChars.toCharArray();
 		for (int i = 0; i < outArr.length; i++) {
 			map.put(inArr[i], outArr[i]);
 		}
-		
+
 		int k;
 		try {
 			while ((k = in.read()) != -1) {
-				
-				out.write(map.containsKey((char)k) ? map.get((char)k) : k);
+
+				out.write(map.containsKey((char) k) ? map.get((char) k) : k);
 			}
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		} finally {
 			try {
 				out.flush();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
-		
 
 	}
 

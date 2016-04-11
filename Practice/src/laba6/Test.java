@@ -46,7 +46,7 @@ public class Test {
 		Reader in = new FileReader("D:\\from.txt");
 		Writer out = new FileWriter("D:\\to.txt");
 
-		utils.replaceChars(in, out, "mo-.", "pa^!");
+		utils.replaceChars(in, out, "mo-.", null);
 
 	}
 
