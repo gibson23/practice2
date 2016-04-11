@@ -22,6 +22,8 @@ public class Matrix {
 	/**
 	 * Constructs a Matrix using specified array.
 	 * @param array the array to create {@code Matrix}
+	 * @throws NullPointerException if <code>array</code>
+	 * argument is <code>null</code>
 	 */
 	public Matrix(double[][] array) {
 		this.array = array;
@@ -43,6 +45,8 @@ public class Matrix {
 	 * @return new Matrix which is result of adding
 	 * @throws IllegalArgumentException if matrices have
 	 * different dimensions.
+	 * @throws NullPointerException if <code>m</code>
+	 * argument is <code>null</code>
 	 */
 	public Matrix add(Matrix m) {
 
@@ -75,6 +79,8 @@ public class Matrix {
 	 * @throws IllegalArgumentException if number of 
 	 * rows of the specified matrix does not equal to
 	 * the number of columns of the current matrix.
+	 * @throws NullPointerException if <code>m</code>
+	 * argument is <code>null</code>
 	 */
 	public Matrix multiply(Matrix m) {
 		double[][] multiplier = m.getArray();
