@@ -20,30 +20,44 @@ public class Test {
 			t.setMax(9_000_000_000L);
 			list.add(t);
 		}
-		for(int i = 0; i < 10; i++) {
-			CopyTask t = new CopyTaskImpl();
-			t.setSource("F:\\Video\\Morandi-Colors.mkv");
-			t.setDest("F:\\copies\\" + i + ".avi");
-			storage.add(t);
-		}
+
 		for(Task t : list) {
 			storage.add(t);
 		}
-		Executor exec1 = new ExecutorImpl();
-		Executor exec2 = new ExecutorImpl();
-		Executor exec3 = new ExecutorImpl();
+		
+		for(int i = 0; i < 30; i++) {
+			CopyTask t = new CopyTaskImpl();
+			t.setSource("D:\\books\\kniga.pdf");
+			t.setDest("D:\\books\\" + i + "copy.pdf");
+			storage.add(t);
+		}
+		
+		Executor exec1 = new ExecutorImpl("exec1");
+		Executor exec2 = new ExecutorImpl("exec2");
+		Executor exec3 = new ExecutorImpl("exec3");
 		exec1.setStorage(storage);
+		exec2.setStorage(storage);
+		exec3.setStorage(storage);
 		exec1.start();
 		exec2.start();
 		exec3.start();
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		exec1.stop();
 		exec2.stop();
 		exec3.stop();
+		
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		for(SumTask s : list) {
+			System.out.print(s.getResult() + ", ");
+		}
 	}
 
 }

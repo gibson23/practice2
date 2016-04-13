@@ -6,9 +6,20 @@ import interfaces.task7.executor.TasksStorage;
 
 public class ExecutorImpl implements Executor {
 
-	private static volatile TasksStorage storage;
-	private volatile boolean stopped = false;
+	private volatile TasksStorage storage;
+	private Thread thread;
+	private String name;
+	private boolean running = false;
 
+	public ExecutorImpl() {
+
+	}
+
+	public ExecutorImpl(String name) {
+		this.name = name;
+	}
+
+	// сделал для тестов
 	@Override
 	public TasksStorage getStorage() {
 		return storage;
@@ -19,38 +30,54 @@ public class ExecutorImpl implements Executor {
 		this.storage = storage;
 	}
 
-	// повышать tryCount если execute() возвращает false
 	@Override
 	public void start() {
-		while (!stopped) {
-			if (storage.count() > 0) {
-				Task t;
-				while ((t = storage.get()) != null) {
-					try {
-						if(!t.execute()) {
-							t.incTryCount();
-							if (t.getTryCount() < 5)
-								storage.add(t);
+		if (running)
+			throw new IllegalStateException(
+					"you must stop executor before making a new start");
+		running = true;
+		thread = new Thread(new Runnable() {
+			@Override
+			public void run() {
+				while (!thread.isInterrupted()) {
+					if (storage.count() > 0) {
+						Task task;
+						while ((task = storage.get()) != null) {
+							try {
+								System.out.println(name + "working on "
+										+ task.getClass().getSimpleName()
+										+ "tryCount()" + task.getTryCount());
+								if (!task.execute()) {
+									task.incTryCount();
+									if (task.getTryCount() < 5)
+										storage.add(task);
+								}
+							} catch (Exception e) {
+								task.incTryCount();
+								if (task.getTryCount() < 5)
+									storage.add(task);
+							}
 						}
-					} catch (Exception e) {
-						t.incTryCount();
-						if (t.getTryCount() < 5)
-							storage.add(t);
 					}
+					try {
+						Thread.sleep(100);
+					} catch (InterruptedException e) {
+						thread.interrupt();
+					}
+
 				}
 			}
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-
+		});
+		thread.setDaemon(true);
+		thread.start();
 	}
 
 	@Override
 	public void stop() {
-		stopped = true;
+		if (!running)
+			throw new IllegalStateException("you must start executor first");
+		thread.interrupt();
+		running = false;
 	}
 
 }

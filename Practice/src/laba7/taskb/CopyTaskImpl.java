@@ -8,36 +8,34 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.channels.FileChannel;
-
 import interfaces.task7.executor.CopyTask;
 
 public class CopyTaskImpl implements CopyTask {
 
 	private int tryCount = 0;
 	private String dest;
-	private String source;
+	InputStream in;
 
 	public CopyTaskImpl() {
-		
+
 	}
-	
+
 	@Override
 	public boolean execute() throws Exception {
 		boolean done = false;
-		if (source.equals(dest))
-			throw new IllegalArgumentException("Can not copy to the same file");
 
-		try (InputStream in = new BufferedInputStream(new FileInputStream(source));
-				OutputStream out = new BufferedOutputStream(new FileOutputStream(dest))) {
+		try (OutputStream out = new BufferedOutputStream(new FileOutputStream(
+				dest))) {
 			int k;
 			while ((k = in.read()) != -1) {
 				out.write(k);
 			}
-		} catch (FileNotFoundException | SecurityException e) {
-			throw new IllegalArgumentException(e);
 		} catch (IOException e) {
-			throw new RuntimeException(e);
+			throw new Exception(e);
+		} finally {
+			if (in != null) {
+				in.close();
+			}
 		}
 		done = true;
 		return done;
@@ -55,13 +53,19 @@ public class CopyTaskImpl implements CopyTask {
 
 	@Override
 	public void setDest(String dest) {
+		if (dest == null)
+			throw new NullPointerException();
 		this.dest = dest;
 
 	}
 
 	@Override
 	public void setSource(String source) {
-		this.source = source;
+		try {
+			in = new BufferedInputStream(new FileInputStream(source));
+		} catch (FileNotFoundException e) {
+			throw new IllegalArgumentException(e);
+		}
 	}
 
 }
