@@ -18,17 +18,18 @@ public class CopyTaskImpl implements CopyTask {
 	private String dest;
 	private String source;
 
+	public CopyTaskImpl() {
+		
+	}
+	
 	@Override
 	public boolean execute() throws Exception {
-		incTryCount();
 		boolean done = false;
 		if (source.equals(dest))
 			throw new IllegalArgumentException("Can not copy to the same file");
 
-		try (InputStream in = new BufferedInputStream(new FileInputStream(
-				source));
-				OutputStream out = new BufferedOutputStream(
-						new FileOutputStream(dest))) {
+		try (InputStream in = new BufferedInputStream(new FileInputStream(source));
+				OutputStream out = new BufferedOutputStream(new FileOutputStream(dest))) {
 			int k;
 			while ((k = in.read()) != -1) {
 				out.write(k);
@@ -38,8 +39,7 @@ public class CopyTaskImpl implements CopyTask {
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
-	
-
+		done = true;
 		return done;
 	}
 

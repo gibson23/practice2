@@ -1,51 +1,61 @@
 package laba7.taskb;
 
 import java.math.BigInteger;
+import java.util.Random;
 
 import interfaces.task7.executor.SumTask;
 
 public class SumTaskImpl implements SumTask{
+	
+	private int tryCount = 0;
+	private long max;
+	private int count;
+	private BigInteger result = BigInteger.valueOf(0L);
+	
+	public SumTaskImpl() {
+		
+	}
 
 	@Override
 	public boolean execute() throws Exception {
-		// TODO Auto-generated method stub
-		return false;
+		boolean done = false;
+		while(count-- > 0) {
+			result = result.add(getRandom());
+		}
+		done = true;
+		return done;
 	}
 
 	@Override
 	public int getTryCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return tryCount;
 	}
 
 	@Override
 	public void incTryCount() {
-		// TODO Auto-generated method stub
-		
+		tryCount++;
 	}
 
 	@Override
 	public BigInteger getRandom() {
-		// TODO Auto-generated method stub
-		return null;
+		Random r = new Random();
+		long randomLong = (long)(r.nextDouble()*max);
+		return BigInteger.valueOf(randomLong);
 	}
 
 	@Override
 	public BigInteger getResult() {
-		// TODO Auto-generated method stub
-		return null;
+		return result;
 	}
 
 	@Override
 	public void setCount(int count) {
-		// TODO Auto-generated method stub
-		
+		this.count = count;
 	}
 
 	@Override
 	public void setMax(long max) {
-		// TODO Auto-generated method stub
-		
+		this.max = max;
 	}
 
 }
