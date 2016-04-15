@@ -14,12 +14,12 @@ public class TasksStorageImpl implements TasksStorage {
 	}
 
 	@Override
-	public void add(Task task) {
+	public synchronized void add(Task task) {
 		queue.add(task);
 	}
 
 	@Override
-	public int count() {
+	public synchronized int count() {
 		return queue.size();
 	}
 
