@@ -29,7 +29,9 @@ public class Test {
 		item5.setTemp("bye");
 		CyclicCollection coll = new CyclicCollectionImpl();
 		coll.add(item1);
-		coll.remove(item1);
+		System.out.println(coll.size());
+		System.out.println(coll.remove(item1));
+		System.out.println(coll.size());
 		coll.add(item2);
 		coll.add(item3);
 		coll.add(item4);
@@ -56,6 +58,18 @@ public class Test {
 		InputStream is2 = new FileInputStream("D:\\obj.dat");
 		CyclicCollection revived2 = (CyclicCollectionImpl) utils.deserialize(is2);
 		System.out.println(revived1 == revived2);
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		CyclicCollection coll3 = new CyclicCollectionImpl();
+		CyclicItem item01 = new CyclicItemImpl();
+		item01.setValue("item01");
+		CyclicItem item02 = new CyclicItemImpl();
+		item02.setValue("item02");
+		coll3.add(item01);
+		coll3.add(item02);
+		coll3.remove(item01);
+		System.out.println(coll3.getFirst().getValue());
+		
+		
 	}
 
 }

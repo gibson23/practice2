@@ -19,7 +19,7 @@ public class CyclicCollectionImpl implements CyclicCollection, Serializable {
 		if (head == null)
 			return false;
 		if (item == head)
-			return false;
+			return true;
 		for (CyclicItem x = head.nextItem(); x != head; x = x.nextItem()) {
 			if (item == x)
 				return true;
@@ -37,7 +37,6 @@ public class CyclicCollectionImpl implements CyclicCollection, Serializable {
 		if (head == null) {
 			head = item;
 			tail = item;
-			item.setNextItem(item);
 			added = true;
 		} else {
 			item.setNextItem(head);
@@ -66,21 +65,21 @@ public class CyclicCollectionImpl implements CyclicCollection, Serializable {
 	}
 
 	@Override
-	public boolean remove(CyclicItem item) {
-		checkNull(item);
-		if (!contains(item))
+	public boolean remove(CyclicItem itemToDelete) {
+		checkNull(itemToDelete);
+		if (!contains(itemToDelete))
 			return false;
-		if (item == head && head == tail) {
+		if (itemToDelete == head && head == tail) {
 			head = null;
 			tail = null;
 			return true;
 		}
 
 		for (CyclicItem x = head;; x = x.nextItem()) {
-			if (item == x.nextItem()) {
-				if (item == head) {
+			if (itemToDelete == x.nextItem()) {
+				if (itemToDelete == head) {
 					head = x.nextItem().nextItem();
-				} else if (item == tail) {
+				} else if (itemToDelete == tail) {
 					tail = x;
 				}
 				x.setNextItem(x.nextItem().nextItem());

@@ -12,7 +12,7 @@ public class CyclicItemImpl implements CyclicItem, Serializable {
 	private CyclicItem nextItem;
 
 	public CyclicItemImpl() {
-
+		nextItem = this;
 	}
 
 	@Override
