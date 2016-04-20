@@ -37,6 +37,7 @@ public class CyclicCollectionImpl implements CyclicCollection, Serializable {
 		if (head == null) {
 			head = item;
 			tail = item;
+			item.setNextItem(item);
 			added = true;
 		} else {
 			item.setNextItem(head);
@@ -93,6 +94,7 @@ public class CyclicCollectionImpl implements CyclicCollection, Serializable {
 		if (head == null)
 			return 0;
 		int size = 1;
+		if(head == tail) return 1;
 		for (CyclicItem c = head.nextItem(); c != head; c = c.nextItem()) {
 			size++;
 		}
