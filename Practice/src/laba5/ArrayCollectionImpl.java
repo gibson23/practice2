@@ -117,6 +117,30 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 		return -1;
 	}
 
+	private void rangeCheck(int index) {
+		if (index >= size)
+			throw new IndexOutOfBoundsException();
+	}
+
+	@SuppressWarnings("unchecked")
+	E elementData(int index) {
+		return (E) elementData[index];
+	}
+
+	public E remove(int index) {
+		rangeCheck(index);
+		modCount++;
+		E oldValue = elementData(index);
+
+		int numMoved = size - index - 1;
+		if (numMoved > 0)
+			System.arraycopy(elementData, index + 1, elementData, index,
+					numMoved);
+		elementData[--size] = null; // clear to let GC do its work
+
+		return oldValue;
+	}
+
 	public class Itr implements ArrayIterator<E> {
 
 		private int cursor; // index of next element to return

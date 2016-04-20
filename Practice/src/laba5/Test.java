@@ -3,13 +3,16 @@ package laba5;
 import interfaces.task2.FractionNumber;
 import interfaces.task2.FractionNumberOperation;
 import interfaces.task5.ArrayCollection;
+import interfaces.task5.ArrayIterator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import laba2.FractionNumberImpl;
 import laba2.FractionNumberOperationImpl;
+import laba5.ArrayCollectionImpl.Itr;
 
 
 
@@ -31,6 +34,15 @@ public class Test {
 			System.out.println(iter.next());
 		System.out.println(Arrays.toString(iter.getArray()));
 		
+		
+		ArrayCollectionImpl<Integer> colya = new ArrayCollectionImpl<>();
+
+			for(int i = 1; i<=20; i++) {
+				colya.add(i);
+			}
+			ArrayCollectionImpl<Integer>.Itr piter = colya.new Itr();
+			if(piter.hasNext())
+				System.out.println(piter.next());
 		
 		
 		ArrayCollection<FractionNumber> coll1 = new ArrayCollectionImpl<>();
@@ -54,6 +66,15 @@ public class Test {
 		list.add("nun9");
 		list.addAll(list);
 		System.out.println(list);
+		
+		System.out.println("~~~~~~~~~~~~~~");
+		ArrayList<Integer> listik = new ArrayList<Integer>();
+		listik.add(5);
+		Iterator<Integer> itka = listik.iterator();
+		System.out.println(listik);
+		itka.next();
+		itka.remove();
+		System.out.println(listik);
 	}
 
 }

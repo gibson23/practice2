@@ -14,7 +14,7 @@ import java.util.Arrays;
 import org.junit.Before;
 import org.junit.Test;
 
-public class ArrayCollectionTest {
+public class ArrayCollectionTestSergey {
 	private static Class testingClass = ArrayCollectionImpl.class;
 
 	private ArrayCollection<Double> arrayCollection = null;
