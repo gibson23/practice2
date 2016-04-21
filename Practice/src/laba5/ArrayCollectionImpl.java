@@ -7,10 +7,16 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import interfaces.task5.ArrayCollection;
 import interfaces.task5.ArrayIterator;
 
 public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
+
+	protected final Logger LOGGER = LoggerFactory
+			.getLogger(ArrayCollectionImpl.class.getName());
 
 	private static final int DEFAULT_CAPACITY = 10;
 
@@ -25,21 +31,28 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 	private int size;
 
 	public ArrayCollectionImpl(int initialCapacity) {
+		LOGGER.trace("ArrayCollectionImpl(int initialCapacity)");
 		if (initialCapacity > 0) {
 			this.elementData = new Object[initialCapacity];
 		} else if (initialCapacity == 0) {
 			this.elementData = EMPTY_ELEMENTDATA;
 		} else {
-			throw new IllegalArgumentException("Illegal Capacity: "
-					+ initialCapacity);
+			try {
+				throw new IllegalArgumentException("Illegal Capacity: "
+						+ initialCapacity);
+			} catch (IllegalArgumentException e) {
+				LOGGER.error(e.getMessage(), e);
+			}
 		}
 	}
 
 	public ArrayCollectionImpl() {
+		LOGGER.trace("ArrayCollectionImpl()");
 		this.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;
 	}
 
 	public void ensureCapacity(int minCapacity) {
+		LOGGER.trace("ensureCapacity(int minCapacity)");
 		int minExpand = (elementData != DEFAULTCAPACITY_EMPTY_ELEMENTDATA)
 		// any size if not default element table
 		? 0
@@ -91,20 +104,24 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 
 	@Override
 	public int size() {
+		LOGGER.trace("size()");
 		return size;
 	}
 
 	@Override
 	public boolean isEmpty() {
+		LOGGER.trace("isEmpty()");
 		return size == 0;
 	}
 
 	@Override
 	public boolean contains(Object o) {
+		LOGGER.trace("contains(Object o)");
 		return indexOf(o) >= 0;
 	}
 
 	public int indexOf(Object o) {
+		LOGGER.trace("indexOf(Object o)");
 		if (o == null) {
 			for (int i = 0; i < size; i++)
 				if (elementData[i] == null)
@@ -119,7 +136,11 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 
 	private void rangeCheck(int index) {
 		if (index >= size)
-			throw new IndexOutOfBoundsException();
+			try {
+				throw new IndexOutOfBoundsException();
+			} catch (Exception e) {
+				LOGGER.error(e.getMessage(), e);
+			}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -128,6 +149,7 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 	}
 
 	public E remove(int index) {
+		LOGGER.trace("remove(int index)");
 		rangeCheck(index);
 		modCount++;
 		E oldValue = elementData(index);
@@ -150,37 +172,56 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 
 		@Override
 		public boolean hasNext() {
+			LOGGER.trace("hasNext()");
 			return cursor != size;
 		}
 
 		@SuppressWarnings("unchecked")
 		@Override
 		public E next() {
+			LOGGER.trace("next()");
 			checkForComodification();
 			int i = cursor;
 			if (i >= size)
-				throw new NoSuchElementException();
+				try {
+					throw new NoSuchElementException();
+				} catch (Exception e) {
+					LOGGER.error(e.getMessage(), e);
+				}
 			Object[] elementData = ArrayCollectionImpl.this.elementData;
 			if (i >= elementData.length)
-				throw new ConcurrentModificationException();
+				try {
+					throw new ConcurrentModificationException();
+				} catch (Exception e) {
+					LOGGER.error(e.getMessage(), e);
+				}
 			cursor = i + 1;
 			return (E) elementData[lastRet = i];
 		}
 
 		@Override
 		public Object[] getArray() {
-
+			LOGGER.trace("getArray()");
 			return ArrayCollectionImpl.this.getArray();
 		}
 
 		final void checkForComodification() {
 			if (modCount != expectedModCount)
-				throw new ConcurrentModificationException();
+				try {
+					throw new ConcurrentModificationException();
+				} catch (Exception e) {
+					LOGGER.error(e.getMessage(), e);
+				}
 		}
 
 		public void remove() {
+			LOGGER.trace("remove()");
 			if (lastRet < 0)
-				throw new IllegalStateException();
+				try {
+					throw new IllegalStateException();
+				} catch (Exception e) {
+					LOGGER.error(e.getMessage(), e);
+				}
 			checkForComodification();
 
 			try {
@@ -189,7 +230,11 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 				lastRet = -1;
 				expectedModCount = modCount;
 			} catch (IndexOutOfBoundsException ex) {
-				throw new ConcurrentModificationException();
+				try {
+					throw new ConcurrentModificationException();
+				} catch (Exception e) {
+					LOGGER.error(e.getMessage(), e);
+				}
 			}
 		}
 
@@ -197,17 +242,20 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 
 	@Override
 	public Iterator<E> iterator() {
+		LOGGER.trace("iterator()");
 		return new Itr();
 	}
 
 	@Override
 	public Object[] toArray() {
+		LOGGER.trace("toArray()");
 		return Arrays.copyOf(elementData, size);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public <T> T[] toArray(T[] a) {
+		LOGGER.trace("toArray(T[] a)");
 		if (a.length < size)
 			// Make a new array of a's runtime type, but my contents:
 			return (T[]) Arrays.copyOf(elementData, size, a.getClass());
@@ -219,6 +267,7 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 
 	@Override
 	public boolean add(E e) {
+		LOGGER.trace("add(E e)");
 		ensureCapacityInternal(size + 1); // Increments modCount!!
 		elementData[size++] = e;
 		return true;
@@ -235,6 +284,7 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 
 	@Override
 	public boolean remove(Object o) {
+		LOGGER.trace("remove(Object o)");
 		if (o == null) {
 			for (int index = 0; index < size; index++)
 				if (elementData[index] == null) {
@@ -253,6 +303,7 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 
 	@Override
 	public boolean containsAll(Collection<?> c) {
+		LOGGER.trace("containsAll(Collection<?> c)");
 		for (Object e : c)
 			if (!contains(e))
 				return false;
@@ -261,8 +312,13 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 
 	@Override
 	public boolean addAll(Collection<? extends E> c) {
+		LOGGER.trace("addAll(Collection<? extends E> c)");
 		if (c == this)
-			throw new IllegalArgumentException("can not add itself");
+			try {
+				throw new IllegalArgumentException("can not add itself");
+			} catch (Exception e) {
+				LOGGER.error(e.getMessage(), e);
+			}
 		Object[] a = c.toArray();
 		int numNew = a.length;
 		ensureCapacityInternal(size + numNew); // Increments modCount
@@ -273,12 +329,14 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 
 	@Override
 	public boolean removeAll(Collection<?> c) {
+		LOGGER.trace("removeAll(Collection<?> c)");
 		Objects.requireNonNull(c);
 		return batchRemove(c, false);
 	}
 
 	@Override
 	public boolean retainAll(Collection<?> c) {
+		LOGGER.trace("retainAll(Collection<?> c)");
 		Objects.requireNonNull(c);
 		return batchRemove(c, true);
 	}
@@ -312,6 +370,7 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 
 	@Override
 	public void clear() {
+		LOGGER.trace("clear()");
 		modCount++;
 
 		// clear to let GC do its work
@@ -324,11 +383,13 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 
 	@Override
 	public Object[] getArray() {
+		LOGGER.trace("getArray()");
 		return this.toArray();
 	}
 
 	@Override
 	public void setArray(E[] array) {
+		LOGGER.trace("setArray(E[] array)");
 		elementData = Arrays.copyOf(array, array.length);
 		if ((size = elementData.length) != 0) {
 			if (elementData.getClass() != Object[].class)
@@ -342,6 +403,7 @@ public class ArrayCollectionImpl<E> implements ArrayCollection<E> {
 
 	@Override
 	public String toString() {
+		LOGGER.trace("toString()");
 		Iterator<E> it = iterator();
 		if (!it.hasNext())
 			return "[]";

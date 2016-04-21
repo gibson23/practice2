@@ -30,6 +30,8 @@ public class Test {
 		System.out.println(Arrays.toString(intArr2));
 		ArrayCollectionImpl<Integer>.Itr iter = coll0.new Itr();
 		System.out.println(iter.hasNext());
+		System.out.println(iter.next());
+		coll0.add(2);
 		while(iter.hasNext())
 			System.out.println(iter.next());
 		System.out.println(Arrays.toString(iter.getArray()));
