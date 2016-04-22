@@ -22,19 +22,19 @@ public class ArrayCollectionTest {
 	}
 
 	@Test(expected = IllegalArgumentException.class, timeout = 100)
-	public void testAddItself() {
+	public void shouldThrowIllegalArgExcForAddItself() {
 		arrayCollection.add(1);
 		arrayCollection.addAll(arrayCollection);
 	}
 
 	@Test(timeout = 100)
-	public void testSize() {
+	public void shouldReturn1AfterAddingOneElement() {
 		arrayCollection.add(1);
 		assertTrue(arrayCollection.size() == 1);
 	}
 
 	@Test(timeout = 100)
-	public void testClear() {
+	public void sizeShouldBeZeroAfterClear() {
 		arrayCollection.add(1);
 		arrayCollection.add(2);
 		arrayCollection.add(3);
@@ -53,9 +53,10 @@ public class ArrayCollectionTest {
 
 	@Test(timeout = 100)
 	public void testIsEmpty() {
-		assertTrue(arrayCollection.isEmpty());
+		assertTrue("should be empty after creation", arrayCollection.isEmpty());
 		arrayCollection.add(3);
-		assertFalse(arrayCollection.isEmpty());
+		assertFalse("should not be empty after adding an element",
+				arrayCollection.isEmpty());
 	}
 
 	@Test(timeout = 100)
@@ -63,24 +64,26 @@ public class ArrayCollectionTest {
 		arrayCollection.add(1);
 		arrayCollection.add(2);
 		arrayCollection.add(3);
-		assertTrue(arrayCollection.removeAll(Arrays.asList(arr1)));
-		assertTrue(arrayCollection.size() == 1);
-		assertTrue(arrayCollection.contains(1));
+		assertTrue("should return true if changed",
+				arrayCollection.removeAll(Arrays.asList(arr1)));
+		assertTrue("size should be 1 after previous method call",
+				arrayCollection.size() == 1);
+		assertTrue("should contain 1", arrayCollection.contains(1));
 	}
 
 	@Test(expected = IllegalArgumentException.class, timeout = 100)
-	public void testNegativeCapacity() {
+	public void shouldThrowIllegalArgExcWhenTryEnterNegativeCapacity() {
 		arrayCollection = new ArrayCollectionImpl<>(-5);
 	}
 
 	@Test(timeout = 100)
-	public void testNullObject() {
+	public void shouldProvideAddingOfNullObject() {
 		arrayCollection.add(null);
 		assertTrue(arrayCollection.contains(null));
 	}
 
 	@Test(timeout = 100)
-	public void testToArray() {
+	public void shouldBeEqualsToAddedArray() {
 		arrayCollection.addAll(Arrays.asList(arr3));
 		assertArrayEquals(arr3, arrayCollection.toArray());
 	}
@@ -89,25 +92,33 @@ public class ArrayCollectionTest {
 	public void testToThisArray() {
 		arrayCollection.addAll(Arrays.asList(arr3));
 		Integer[] array2 = new Integer[3];
-		assertArrayEquals(arr3, arrayCollection.toArray(array2));
+		assertArrayEquals("should correctly write to given array", arr3,
+				arrayCollection.toArray(array2));
 		Integer[] array3 = new Integer[1];
-		assertArrayEquals(arr3, arrayCollection.toArray(array3));
+		assertArrayEquals(
+				"should correctly write to given array even if it is smaller",
+				arr3, arrayCollection.toArray(array3));
 	}
 
 	@Test(timeout = 100)
 	public void testRemove() {
 		arrayCollection.addAll(Arrays.asList(arr3));
 		arrayCollection.add(null);
-		assertTrue(arrayCollection.remove(arr3[0]));
+		assertTrue("should return true after changing collection",
+				arrayCollection.remove(arr3[0]));
 		assertTrue(arrayCollection.size() == 3);
-		assertFalse(arrayCollection.contains(arr3[0]));
-		assertTrue(arrayCollection.remove(null));
+		assertFalse("should not contain deleted element",
+				arrayCollection.contains(arr3[0]));
+		assertTrue("should remove null object properly",
+				arrayCollection.remove(null));
 		assertFalse(arrayCollection.contains(null));
-		assertFalse(arrayCollection.remove(100));
+		assertFalse(
+				"should return false if collection has no removing element",
+				arrayCollection.remove(100));
 	}
 
 	@Test(timeout = 100)
-	public void testContainsAll() {
+	public void containsShouldWorkProperly() {
 		arrayCollection.addAll(Arrays.asList(arr3));
 		arrayCollection.addAll(Arrays.asList(arr1));
 		assertTrue(arrayCollection.containsAll(Arrays.asList(arr3)));
@@ -118,24 +129,28 @@ public class ArrayCollectionTest {
 	public void testRetainAll() {
 		arrayCollection.addAll(Arrays.asList(arr3));
 		assertTrue(arrayCollection.retainAll(Arrays.asList(arr4)));
-		assertTrue(arrayCollection.size() == 2);
-		assertArrayEquals(arr4, arrayCollection.toArray());
+		assertTrue("size after retainAll should be equals 2",
+				arrayCollection.size() == 2);
+		assertArrayEquals("should contain only retain elements", arr4,
+				arrayCollection.toArray());
 	}
 
 	@Test(timeout = 100)
 	public void testGetArray() {
 		arrayCollection.addAll(Arrays.asList(arr3));
-		assertArrayEquals(arr3, arrayCollection.getArray());
+		assertArrayEquals("should return array equals to given", arr3,
+				arrayCollection.getArray());
 	}
 
 	@Test(expected = NullPointerException.class, timeout = 100)
-	public void testSetNullArray() {
+	public void shouldThrowNullPointerExcWhenTryToSetNullArray() {
 		arrayCollection.setArray(null);
 	}
 
 	@Test(timeout = 100)
 	public void testSetArray() {
 		arrayCollection.setArray(arr3);
-		assertArrayEquals(arr3, arrayCollection.getArray());
+		assertArrayEquals("should be equals to given array", arr3,
+				arrayCollection.getArray());
 	}
 }
