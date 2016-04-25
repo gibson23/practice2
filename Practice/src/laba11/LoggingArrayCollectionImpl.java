@@ -74,13 +74,17 @@ public class LoggingArrayCollectionImpl<E> implements LoggingArrayCollection<E> 
 	@Override
 	public Object[] getArray() {
 		LOGGER.trace(".");
-		return exucutant.getArray();
+		return toArray();
 	}
 
 	@Override
 	public void setArray(E[] array) {
 		LOGGER.trace(".");
-		exucutant.setArray(array);
+		try {
+			exucutant.setArray(array);
+		} catch (RuntimeException e) {
+			LOGGER.error(e.getMessage(), e);
+		}
 
 	}
 
@@ -121,7 +125,13 @@ public class LoggingArrayCollectionImpl<E> implements LoggingArrayCollection<E> 
 			@Override
 			public Object[] getArray() {
 				LOGGER.trace(".");
-				return executantIter.getArray();
+				Object[] result = null;
+				try {
+					result = executantIter.getArray();
+				} catch (RuntimeException e) {
+					LOGGER.error(e.getMessage(), e);
+				}
+				return result;
 			}
 		};
 		return iterator;
@@ -130,13 +140,25 @@ public class LoggingArrayCollectionImpl<E> implements LoggingArrayCollection<E> 
 	@Override
 	public Object[] toArray() {
 		LOGGER.trace(".");
-		return exucutant.toArray();
+		Object[] result = null;
+		try {
+			result = exucutant.toArray();
+		} catch (RuntimeException e) {
+			LOGGER.error(e.getMessage(), e);
+		}
+		return result;
 	}
 
 	@Override
 	public <T> T[] toArray(T[] a) {
 		LOGGER.trace(".");
-		return exucutant.toArray(a);
+		T[] result = null;
+		try {
+			result = exucutant.toArray(a);
+		} catch (RuntimeException e) {
+			LOGGER.error(e.getMessage(), e);
+		}
+		return result;
 	}
 
 	@Override
@@ -166,7 +188,13 @@ public class LoggingArrayCollectionImpl<E> implements LoggingArrayCollection<E> 
 	@Override
 	public boolean containsAll(Collection<?> c) {
 		LOGGER.trace(".");
-		return exucutant.containsAll(c);
+		boolean result = false;
+		try {
+			result = exucutant.containsAll(c);
+		} catch (RuntimeException e) {
+			LOGGER.error(e.getMessage(), e);
+		}
+		return result;
 	}
 
 	@Override
