@@ -1,5 +1,6 @@
 package laba4;
 
+import interfaces.task4.CollectionUtils;
 import interfaces.task4.MapUtils;
 
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.Map;
 public class Test {
 	
 	public static void main(String[] args) {
-		CollectionUtilsImpl impl = new CollectionUtilsImpl();
+		CollectionUtils impl = new CollectionUtilsImpl();
 		List<Integer> list1 = new ArrayList<Integer>();
 		for(int i = 100; i < 120; i++) {
 			list1.add(i);
