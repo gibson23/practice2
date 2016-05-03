@@ -3,7 +3,6 @@ package laba5;
 import interfaces.task2.FractionNumber;
 import interfaces.task2.FractionNumberOperation;
 import interfaces.task5.ArrayCollection;
-import interfaces.task5.ArrayIterator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,11 +11,10 @@ import java.util.List;
 
 import laba2.FractionNumberImpl;
 import laba2.FractionNumberOperationImpl;
-import laba5.ArrayCollectionImpl.Itr;
 
 
 
-public class Test {
+public class Usage {
 
 	public static void main(String[] args) {
 		ArrayCollectionImpl<Integer> coll0 = new ArrayCollectionImpl<>();

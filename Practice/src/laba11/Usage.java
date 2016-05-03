@@ -5,9 +5,9 @@ import java.util.ConcurrentModificationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Test {
+public class Usage {
 	
-	public static final Logger LOGGER = LoggerFactory.getLogger(laba11.Test.class);
+	public static final Logger LOGGER = LoggerFactory.getLogger(laba11.Usage.class);
 	
 	public void pipa() {
 		LOGGER.trace("pipa called");
@@ -22,7 +22,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		System.out.println(LOGGER.isTraceEnabled());
-		Test test = new Test();
+		Usage test = new Usage();
 		try {
 			test.pipa();
 		} catch (ConcurrentModificationException e) {

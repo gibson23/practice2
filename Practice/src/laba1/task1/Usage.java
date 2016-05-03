@@ -1,7 +1,7 @@
 package laba1.task1;
 
 
-public class Test {
+public class Usage {
 	
     public static double[][] transposeMatrix(double[][] m){
         double[][] temp = new double[m[0].length][m.length];

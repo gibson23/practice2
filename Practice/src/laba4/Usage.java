@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class Test {
+public class Usage {
 	
 	public static void main(String[] args) {
 		CollectionUtils impl = new CollectionUtilsImpl();

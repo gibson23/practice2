@@ -5,7 +5,7 @@ import java.util.Arrays;
 import interfaces.logging.LoggingArrayCollection;
 import interfaces.task5.ArrayIterator;
 
-public class LogTest {
+public class LogUsage {
 
 	public static void main(String[] args) {
 		LoggingArrayCollection<Integer> coll0 = new LoggingArrayCollectionImpl<>();

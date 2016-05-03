@@ -9,7 +9,7 @@ import java.io.Writer;
 
 import interfaces.task6.IOUtils;
 
-public class Test {
+public class Usage {
 
 	public static void main(String[] args) throws IOException {
 		File sourceFile = new File("D:\\books\\kniga.pdf");

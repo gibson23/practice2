@@ -10,7 +10,7 @@ import interfaces.task8.CyclicCollection;
 import interfaces.task8.CyclicItem;
 import interfaces.task8.SerializableUtils;
 
-public class Test {
+public class Usage {
 
 	public static void main(String[] args) throws IOException,
 			InterruptedException {

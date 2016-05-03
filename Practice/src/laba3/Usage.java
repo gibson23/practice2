@@ -3,7 +3,7 @@ package laba3;
 import interfaces.task3.StringDiv;
 import interfaces.task3.StringUtils;
 
-public class Test {
+public class Usage {
 	
 	public static void main(String[] args) {
 		StringUtils  utils = new StringUtilsImpl();

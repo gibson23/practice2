@@ -4,7 +4,7 @@ import junit.framework.TestResult;
 import junit.framework.TestSuite;
 import interfaces.junit.JunitTester;
 
-public class Test {
+public class Usage {
 	public static void main(String[] args) {
 		JunitTester tester = new JunitTesterImpl();
 		TestSuite suite = tester.suite();

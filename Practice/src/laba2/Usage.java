@@ -3,7 +3,7 @@ package laba2;
 import interfaces.task2.FractionNumber;
 import interfaces.task2.FractionNumberOperation;
 
-public class Test {
+public class Usage {
 
 	public static void main(String[] args) {
 		

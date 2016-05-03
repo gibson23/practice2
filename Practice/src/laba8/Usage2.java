@@ -3,7 +3,7 @@ package laba8;
 import java.util.Arrays;
 
 
-public class Test2 {
+public class Usage2 {
 
 	public static void main(String[] args) throws ClassNotFoundException {
 	

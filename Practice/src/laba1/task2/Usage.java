@@ -2,7 +2,7 @@ package laba1.task2;
 
 import java.util.Random;
 
-public class Test {
+public class Usage {
 
 	public static void main(String[] args) {
 		

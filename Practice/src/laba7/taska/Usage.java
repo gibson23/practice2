@@ -4,7 +4,7 @@ import interfaces.task7.simple.NamePrinterRunnable;
 import interfaces.task7.simple.NamePrinterThread;
 
 
-public class Test {
+public class Usage {
 
 	public static void main(String[] args) {
 		

@@ -5,7 +5,7 @@ import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Test2 {
+public class Usage2 {
 	public static Map<String, Integer> findThrees(String str) {
 		Map<String, Integer> result = new TreeMap<>();
 		Matcher m = Pattern.compile("[A-Za-z0-9]{3}").matcher(str);

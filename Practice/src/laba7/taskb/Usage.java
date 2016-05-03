@@ -9,7 +9,7 @@ import interfaces.task7.executor.SumTask;
 import interfaces.task7.executor.Task;
 import interfaces.task7.executor.TasksStorage;
 
-public class Test {
+public class Usage {
 
 	public static void main(String[] args) {
 		TasksStorage storage = new TasksStorageImpl();
