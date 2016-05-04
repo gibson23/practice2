@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="3.0.1" sequence="0" timestamp="1462381562148" analysisTimestamp="1462381562159" release="">
+  <Project projectName="">
+    <Jar>C:\Users\admin\workspace\Laba12\target\bin</Jar>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\checkstyle-6.17-all.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\cobertura-2.1.1-javadoc.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\cobertura-2.1.1-sources.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\cobertura-2.1.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\asm-5.0.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\asm-analysis-5.0.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\asm-commons-5.0.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\asm-tree-5.0.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\asm-util-5.0.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\commons-lang3-3.3.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\hamcrest-core-1.3.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\jaxen-1.1.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\jetty-6.1.14.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\jetty-util-6.1.14.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\junit-4.11.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\logback-classic-1.0.13.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\logback-core-1.0.13.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\oro-2.0.8.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\servlet-api-2.5-6.1.14.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\cobertura-2.1.1\lib\slf4j-api-1.7.5.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\lib\annotations.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\lib\ant.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\lib\asm-debug-all-5.0.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\lib\bcel-6.0-SNAPSHOT.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\lib\commons-lang-2.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\lib\dom4j-1.6.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\lib\findbugs-ant.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\lib\findbugs.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\lib\jFormatString.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\lib\jaxen-1.1.6.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\lib\jcip-annotations.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\lib\jdepend-2.9.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\lib\jsr305.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\lib\yjp-controller-api-redist.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\optionalPlugin\bugCollectionCloud.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\optionalPlugin\poweruser.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\findbugs-3.0.1\plugin\noUpdateChecks.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\hamcrest-core-1.3.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\interfaces-2.0.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\junit-4.12.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\mockobjects-core-0.09.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\pmd-bin-4.2.6\lib\asm-3.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\pmd-bin-4.2.6\lib\jaxen-1.1.1.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\pmd-bin-4.2.6\lib\junit-4.4.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>C:\Users\admin\workspace\Laba12\lib\pmd-bin-4.2.6\lib\pmd-4.2.6.jar</AuxClasspathEntry>
+    <SrcDir>C:\Users\admin\workspace\Laba12\lib\checkstyle-6.17-all.jar</SrcDir>
+    <SrcDir>C:\Users\admin\workspace\Laba12\lib\hamcrest-core-1.3.jar</SrcDir>
+    <SrcDir>C:\Users\admin\workspace\Laba12\lib\interfaces-2.0.2.jar</SrcDir>
+    <SrcDir>C:\Users\admin\workspace\Laba12\lib\junit-4.12.jar</SrcDir>
+    <SrcDir>C:\Users\admin\workspace\Laba12\lib\mockobjects-core-0.09.jar</SrcDir>
+    <SrcDir>C:\Users\admin\workspace\Laba12\target\bin</SrcDir>
+    <SrcDir>C:\Users\admin\workspace\Laba12\target\testbin</SrcDir>
+  </Project>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Wed, 4 May 2016 20:06:02 +0300" total_classes="4" referenced_classes="32" total_bugs="0" total_size="225" num_packages="2" java_version="1.8.0_31" vm_version="25.31-b07" cpu_seconds="3.59" clock_seconds="1.06" peak_mbytes="109.96" alloc_mbytes="1801.00" gc_seconds="0.03">
+    <FileStats path="antlaba/package-info.java" bugCount="0" size="1"/>
+    <FileStats path="antlaba/src/ArrayCollectionImpl.java" bugCount="0" size="223"/>
+    <FileStats path="antlaba/src/package-info.java" bugCount="0" size="1"/>
+    <PackageStats package="antlaba" total_bugs="0" total_types="1" total_size="1">
+      <ClassStats class="antlaba.package-info" sourceFile="package-info.java" interface="true" size="1" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="antlaba.src" total_bugs="0" total_types="3" total_size="224">
+      <ClassStats class="antlaba.src.ArrayCollectionImpl" sourceFile="ArrayCollectionImpl.java" interface="false" size="183" bugs="0"/>
+      <ClassStats class="antlaba.src.ArrayCollectionImpl$Itr" sourceFile="ArrayCollectionImpl.java" interface="false" size="40" bugs="0"/>
+      <ClassStats class="antlaba.src.package-info" sourceFile="package-info.java" interface="true" size="1" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="157" invocations="430" avgMicrosecondsPerInvocation="365" maxMicrosecondsPerInvocation="12123" standardDeviationMircosecondsPerInvocation="863"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="94" invocations="431" avgMicrosecondsPerInvocation="219" maxMicrosecondsPerInvocation="2008" standardDeviationMircosecondsPerInvocation="121"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="36" invocations="32" avgMicrosecondsPerInvocation="1150" maxMicrosecondsPerInvocation="14683" standardDeviationMircosecondsPerInvocation="2699"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="34" invocations="168" avgMicrosecondsPerInvocation="207" maxMicrosecondsPerInvocation="4649" standardDeviationMircosecondsPerInvocation="525"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="34" invocations="32" avgMicrosecondsPerInvocation="1069" maxMicrosecondsPerInvocation="9509" standardDeviationMircosecondsPerInvocation="2071"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="32" invocations="38" avgMicrosecondsPerInvocation="842" maxMicrosecondsPerInvocation="27869" standardDeviationMircosecondsPerInvocation="4444"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="28" invocations="399" avgMicrosecondsPerInvocation="70" maxMicrosecondsPerInvocation="1215" standardDeviationMircosecondsPerInvocation="131"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="26" invocations="38" avgMicrosecondsPerInvocation="688" maxMicrosecondsPerInvocation="8750" standardDeviationMircosecondsPerInvocation="1474"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="22" invocations="38" avgMicrosecondsPerInvocation="599" maxMicrosecondsPerInvocation="8490" standardDeviationMircosecondsPerInvocation="1388"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="22" invocations="48" avgMicrosecondsPerInvocation="464" maxMicrosecondsPerInvocation="10924" standardDeviationMircosecondsPerInvocation="1601"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="20" invocations="38" avgMicrosecondsPerInvocation="542" maxMicrosecondsPerInvocation="6515" standardDeviationMircosecondsPerInvocation="1087"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="18" invocations="38" avgMicrosecondsPerInvocation="493" maxMicrosecondsPerInvocation="9279" standardDeviationMircosecondsPerInvocation="1461"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="16" invocations="38" avgMicrosecondsPerInvocation="443" maxMicrosecondsPerInvocation="3387" standardDeviationMircosecondsPerInvocation="633"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="16" invocations="38" avgMicrosecondsPerInvocation="438" maxMicrosecondsPerInvocation="3827" standardDeviationMircosecondsPerInvocation="608"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="16" invocations="32" avgMicrosecondsPerInvocation="506" maxMicrosecondsPerInvocation="5810" standardDeviationMircosecondsPerInvocation="1073"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="12" invocations="32" avgMicrosecondsPerInvocation="404" maxMicrosecondsPerInvocation="7402" standardDeviationMircosecondsPerInvocation="1293"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindDeadLocalStores" totalMilliseconds="12" invocations="4" avgMicrosecondsPerInvocation="3048" maxMicrosecondsPerInvocation="8666" standardDeviationMircosecondsPerInvocation="3548"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

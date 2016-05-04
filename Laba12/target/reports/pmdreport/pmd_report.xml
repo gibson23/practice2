@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.2.6" timestamp="2016-05-04T20:06:00.366">
+<file name="C:\Users\admin\workspace\Laba12\src\antlaba\src\ArrayCollectionImpl.java">
+<violation beginline="18" endline="508" begincolumn="8" endcolumn="1" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="antlaba.src" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The class 'ArrayCollectionImpl' has a Cyclomatic Complexity of 2 (Highest = 6).
+</violation>
+<violation beginline="196" endline="211" begincolumn="16" endcolumn="3" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="antlaba.src" class="ArrayCollectionImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The method 'indexOf' has a Cyclomatic Complexity of 6.
+</violation>
+<violation beginline="250" endline="250" begincolumn="27" endcolumn="30" rule="NullAssignment" ruleset="Controversial Rules" package="antlaba.src" class="ArrayCollectionImpl" method="remove" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#NullAssignment" priority="3">
+Assigning an Object to null is a code smell.  Consider refactoring.
+</violation>
+<violation beginline="358" endline="358" begincolumn="27" endcolumn="30" rule="NullAssignment" ruleset="Controversial Rules" package="antlaba.src" class="ArrayCollectionImpl" method="fastRemove" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#NullAssignment" priority="3">
+Assigning an Object to null is a code smell.  Consider refactoring.
+</violation>
+<violation beginline="362" endline="379" begincolumn="16" endcolumn="3" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="antlaba.src" class="ArrayCollectionImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The method 'remove' has a Cyclomatic Complexity of 6.
+</violation>
+<violation beginline="416" endline="444" begincolumn="11" endcolumn="3" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="antlaba.src" class="ArrayCollectionImpl" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The method 'batchRemove' has a Cyclomatic Complexity of 6.
+</violation>
+<violation beginline="452" endline="452" begincolumn="24" endcolumn="27" rule="NullAssignment" ruleset="Controversial Rules" package="antlaba.src" class="ArrayCollectionImpl" method="clear" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#NullAssignment" priority="3">
+Assigning an Object to null is a code smell.  Consider refactoring.
+</violation>
+</file>
+<error filename="C:\Users\admin\workspace\Laba12\src\antlaba\testsrc\ArrayCollectionIteratorTest.java" msg="Error while parsing C:\Users\admin\workspace\Laba12\src\antlaba\testsrc\ArrayCollectionIteratorTest.java"/>
+<error filename="C:\Users\admin\workspace\Laba12\src\antlaba\testsrc\ArrayCollectionTest.java" msg="Error while parsing C:\Users\admin\workspace\Laba12\src\antlaba\testsrc\ArrayCollectionTest.java"/>
+</pmd>
